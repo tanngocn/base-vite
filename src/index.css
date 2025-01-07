@@ -11,6 +11,9 @@
 html,
 body {
 }
+.tradingview-widget-container__widget iframe{
+  height: 500px;
+}
 input:focus-visible{
   box-shadow: none !important;
 }
