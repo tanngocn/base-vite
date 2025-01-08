@@ -17,12 +17,10 @@ function TradingViewChart(): React.ReactElement {
 
   useEffect(() => {
     const chartWrapper = document.getElementById('chart-wrapper');
-    if (render.current && chartWrapper) {
-      render.current = false;
+    if ( chartWrapper) {
       const chart1 = LightweightCharts.createChart(chartWrapper, {
-        width: chartWrapper.clientWidth,
-        height: chartWrapper.clientHeight / 1.5,
-
+        width: chartWrapper.offsetWidth,
+        height: chartWrapper.offsetHeight / 1.5,
         layout: {
           background: {
             color: '#253248',
@@ -69,7 +67,7 @@ function TradingViewChart(): React.ReactElement {
         },
       });
       const chart2 = LightweightCharts.createChart(chartWrapper, {
-        width: chartWrapper.clientWidth,
+        width: chartWrapper.offsetWidth,
         height: 200,
 
         layout: {
@@ -116,6 +114,7 @@ function TradingViewChart(): React.ReactElement {
           borderColor: '#485158',
         },
       });
+      render.current = false;
 
       const candleSeries = chart1.addCandlestickSeries({
         upColor: '#4bffb5',
@@ -143,9 +142,11 @@ function TradingViewChart(): React.ReactElement {
       // Update data every 3 seconds
       const intervalId = setInterval(() => {
         const bar = generateBarData();
-        const barType = generateBarData('gray');
         candleSeries.update(bar);
-        candleSeries.update(barType);
+      }, 3000);
+      const intervalIdVolumne = setInterval(() => {
+        const barType = generateBarData('gray');
+        volumeSeries.update(barType);
       }, 3000);
 
       // Handle window resize
@@ -153,9 +154,16 @@ function TradingViewChart(): React.ReactElement {
         if (chart1) {
           chart1.applyOptions({
             width: chartWrapper!.offsetWidth,
-            height: chartWrapper!.offsetHeight,
+            height: chartWrapper.offsetHeight / 1.5,
           });
           chart1.timeScale().fitContent();
+        }
+        if (chart2) {
+          chart2.applyOptions({
+            width: chartWrapper!.offsetWidth,
+            height: 200,
+          });
+          chart2.timeScale().fitContent();
         }
       };
       chart1.timeScale().subscribeVisibleLogicalRangeChange((timeRange: any) => {
@@ -166,7 +174,7 @@ function TradingViewChart(): React.ReactElement {
         chart1.timeScale().setVisibleLogicalRange(timeRange);
       });
 
-      function getCrosshairDataPoint(series:any, param:any) {
+      function getCrosshairDataPoint(series: any, param: any) {
         if (!param.time) {
           return null;
         }
@@ -174,7 +182,7 @@ function TradingViewChart(): React.ReactElement {
         return dataPoint || null;
       }
 
-      function syncCrosshair(chart:any, series:any, dataPoint:any) {
+      function syncCrosshair(chart: any, series: any, dataPoint: any) {
         if (dataPoint) {
           chart.setCrosshairPosition(dataPoint.value, dataPoint.time, series);
           return;
@@ -189,11 +197,12 @@ function TradingViewChart(): React.ReactElement {
         const dataPoint = getCrosshairDataPoint(volumeSeries, param);
         syncCrosshair(chart1, candleSeries, dataPoint);
       });
-      
-      window.addEventListener('resize', resizeHandler, false);
+
+      window.addEventListener('resize', resizeHandler);
 
       return () => {
         clearInterval(intervalId);
+        clearInterval(intervalIdVolumne);
         window.removeEventListener('resize', resizeHandler);
       };
     }
