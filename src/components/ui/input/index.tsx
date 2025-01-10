@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
   ({ className, type, ...props }, ref) => {
     return (
-      <div className="flex items-center">
+      <div className="flex items-center w-full">
         <input
           type={type}
           className={cn(

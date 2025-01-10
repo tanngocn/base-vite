@@ -1,5 +1,6 @@
 import TabsCustom from '@/components/common/TabCustom';
 import TradingViewChart from '@/components/common/TradingViewChart';
+import SwapBox from './components/Swap';
 
 const tabs = [
   {
@@ -24,13 +25,15 @@ const tabs = [
 const DetailPage = () => {
   return (
     <div>
-      <div className="container">
+      <div className="container  mt-4">
         <div className="grid grid-cols-12 gap-4 lg:gap-6">
-          <div className="col-span-12 col-span-8 rounded-lg p-4 bg-black mt-4 flex flex-col gap-12">
+          <div className="col-span-12 col-span-8 rounded-lg p-4 bg-black flex flex-col gap-12">
             <TradingViewChart />
-            <TabsCustom  classNames='border' tabs={tabs} />
+            <TabsCustom classNames="border" tabs={tabs} />
           </div>
-          <div className="col-span-12 col-span-4"></div>
+          <div className="col-span-12 col-span-4">
+            <SwapBox />
+          </div>
         </div>
       </div>
     </div>

@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@radix-ui/react-label": "^2.1.1",
+    "@radix-ui/react-progress": "^1.1.1",
     "@tanstack/react-table": "^8.20.6",
     "bignumber.js": "^9.1.2",
     "dayjs": "^1.11.13",

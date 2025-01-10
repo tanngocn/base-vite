@@ -10,7 +10,8 @@
       "@/components/*": ["components/*"],
       "@/layouts/*": ["layouts/*"],
       "@/views/*": ["views/*"],
-      "@/lib/*": ["lib/*"]
+      "@/lib/*": ["lib/*"],
+      "@/assets/*": ["assets/*"]
     }
   }
 }

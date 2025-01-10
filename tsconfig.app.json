@@ -21,7 +21,8 @@
       "@/components/*": ["components/*"],
       "@/lib/*": ["lib/*"],
       "@/views/*": ["views/*"],
-      "@layouts/*": ["layouts/*"]
+      "@layouts/*": ["layouts/*"],
+      "@/assets/*": ["assets/*"]
     },
     /* Linting */
     "strict": true,
