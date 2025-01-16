@@ -3,22 +3,80 @@
 @tailwind utilities;
 
 * {
+  --black-100: #18181b;
+  --black-600: #16181E;
   margin: 0;
   padding: 0;
+  letter-spacing: 2%;
 }
 
-.box{
+.box {
   @apply rounded-xl p-4 bg-black/80;
 }
-
+/* title */
+.title-14 {
+  @apply text-[14px] font-[600] leading-[20px] text-white;
+}
+.title-20 {
+  @apply text-[20px] font-bold leading-[24px] text-white;
+}
+.title-24 {
+  @apply text-[24px] font-bold leading-[28.8px] text-white;
+}
+/* subtitle */
+.subtitle-16 {
+  @apply text-[16px] font-[600] leading-[24px] text-white;
+}
+/* semibold */
+.semibold-12 {
+  @apply text-[12px] font-[500] leading-[15.6px] text-white;
+}
+.semibold-14 {
+  @apply text-[14px] font-[600] leading-[14px] text-white;
+}
+/* medium */
+.medium-14 {
+  @apply text-[14px] font-[500] leading-[28.8px] text-white;
+}
+.medium-16 {
+  @apply text-[16px] font-[500] leading-[24px] text-white;
+}
+/* content */
+.content-12 {
+  @apply text-[12px] font-[400] leading-[14px] text-white;
+}
+.content-13 {
+  @apply text-[13px] font-[400] leading-[19.5px] text-white;
+}
+.content-14 {
+  @apply text-[14px] font-[400] leading-[21px] text-white;
+}
+.content-16 {
+  @apply text-[16px] font-[400] leading-[24px] text-white;
+}
+/* placeholder */
+.placeholder-14 {
+  @apply text-[14px] font-[300] leading-[24px] text-white;
+}
+input {
+  margin-top: 0 !important;
+}
 
 html,
 body {
+  background-color: var(--black-100);
 }
-.tradingview-widget-container__widget iframe{
+.tradingview-widget-container__widget iframe {
   height: 500px;
 }
-input:focus-visible{
+input:focus-visible {
   box-shadow: none !important;
 }
 
+
+.icon-white svg path{
+    fill: white;
+}
+.icon-black svg *{
+  fill: var(--black-600);;
+}

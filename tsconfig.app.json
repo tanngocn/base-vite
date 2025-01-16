@@ -20,6 +20,7 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/lib/*": ["lib/*"],
+      "@/hooks/*": ["hooks/*"],
       "@/views/*": ["views/*"],
       "@layouts/*": ["layouts/*"],
       "@/assets/*": ["assets/*"]

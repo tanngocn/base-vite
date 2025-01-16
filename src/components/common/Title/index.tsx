@@ -7,8 +7,8 @@ interface ITitleProps {
 
 const Title: FC<ITitleProps> = ({ children, title }) => {
   return (
-    <div className="flex items-center mb-4 text-white">
-      <h2>{title}</h2>
+    <div className="flex items-center mb-4 text-white border-b border-black-300 pb-[22px]">
+      <h2 className='title-24'>{title}</h2>
       {children}
     </div>
   );

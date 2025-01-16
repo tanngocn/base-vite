@@ -50,3 +50,6 @@ export const generateBarData = (): BarData => {
 
   return nextBar.bar;
 };
+
+
+
